@@ -80,3 +80,4 @@ python scripts/ai_deploy.py --changed-files 12
 VPS（Virtual Private Server，虚拟专用服务器）是云厂商把一台物理服务器虚拟成多台“独立小服务器”后分配给你的实例。  
 它有独立公网 IP、独立系统环境、可远程 SSH 登录，像一台你自己的 Linux 服务器。  
 通常用来部署网站、后端 API、数据库、定时任务等。
+auto-deploy-test
