@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: flask-user-system
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY:-change-me}
+      DATABASE_URL: sqlite:////app/data/users.db
+      TOKEN_MAX_AGE: 3600
+    volumes:
+      - ./data:/app/data

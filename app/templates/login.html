@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户系统 - 登录</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="card auth-card">
+        <h1 class="title">用户系统</h1>
+        <p class="subtitle">请输入账号密码登录，登录后即可查看商品销售管理页。</p>
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        <form class="form-grid" method="post">
+            <label class="field">
+                <span>账号</span>
+                <input name="username" placeholder="请输入用户名">
+            </label>
+            <label class="field">
+                <span>密码</span>
+                <input name="password" type="password" placeholder="请输入密码">
+            </label>
+            <button class="btn" type="submit">登录</button>
+        </form>
+        <p class="subtitle" style="margin-top: 18px;">还没有账号？<a href="{{ url_for('web.register_page') }}">立即注册</a></p>
+    </div>
+</div>
+</body>
+</html>

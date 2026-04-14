@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户系统首页</title>
+</head>
+<body>
+<h1>Flask 用户系统</h1>
+{% if user %}
+  <p>当前用户：{{ user.username }}</p>
+  <a href="/dashboard">进入管理页</a>
+{% else %}
+  <a href="/login-page">登录</a>
+  <a href="/register-page">注册</a>
+{% endif %}
+</body>
+</html>

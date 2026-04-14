@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="card auth-card">
+        <h1 class="title">用户系统</h1>
+        <p class="subtitle">请先登录，再进入商品销售管理页面。</p>
+        <div class="tips">
+            当前系统支持用户注册、登录、商品录入、销售额修改和删除。
+        </div>
+        <div class="form-grid">
+            <a class="btn" href="{{ url_for('web.login_page') }}">进入登录</a>
+            <a class="btn secondary" href="{{ url_for('web.register_page') }}">没有账号？去注册</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

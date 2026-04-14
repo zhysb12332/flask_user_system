@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<h2>登录</h2>
+{% if error %}<p>{{ error }}</p>{% endif %}
+<form method="post">
+    <label>用户名：<input name="username" /></label><br />
+    <label>密码：<input name="password" type="password" /></label><br />
+    <button type="submit">登录</button>
+</form>
+<a href="/register-page">去注册</a>
+</body>
+</html>

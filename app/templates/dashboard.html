@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户系统 - 商品管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="card">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="title">用户系统</h1>
+                <p class="subtitle">欢迎你，{{ user.username }}。这里是简化版商品销售管理后台。</p>
+            </div>
+            <form method="post" action="{{ url_for('web.logout_page') }}">
+                <button class="btn secondary" type="submit">退出登录</button>
+            </form>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">商品数量</div>
+                <div class="stat-value">{{ product_count }}</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">销售总额</div>
+                <div class="stat-value">¥ {{ '%.2f'|format(total_sales) }}</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">当前用户</div>
+                <div class="stat-value" style="font-size: 22px;">{{ user.username }}</div>
+            </div>
+        </div>
+
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+        <div class="dashboard-grid">
+            <section class="panel">
+                <h3>新增商品</h3>
+                <p class="subtitle">录入一个商品名称、分类和当前销售额。</p>
+                <form class="form-grid" method="post" action="{{ url_for('web.create_product') }}">
+                    <label class="field">
+                        <span>商品名称</span>
+                        <input name="name" placeholder="例如：智能音箱">
+                    </label>
+                    <label class="field">
+                        <span>商品分类</span>
+                        <input name="category" placeholder="例如：数码">
+                    </label>
+                    <label class="field">
+                        <span>销售额</span>
+                        <input name="sales_amount" placeholder="例如：18888">
+                    </label>
+                    <button class="btn" type="submit">保存商品</button>
+                </form>
+            </section>
+
+            <section class="panel">
+                <h3>商品列表</h3>
+                <table class="product-table">
+                    <thead>
+                    <tr>
+                        <th>商品</th>
+                        <th>分类</th>
+                        <th>销售额</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>¥ {{ '%.2f'|format(product.sales_amount) }}</td>
+                            <td>
+                                <form class="inline-form" method="post" action="{{ url_for('web.update_product_sales', product_id=product.id) }}">
+                                    <input name="sales_amount" value="{{ '%.2f'|format(product.sales_amount) }}">
+                                    <button class="btn" type="submit">更新</button>
+                                </form>
+                                <form style="margin-top: 8px;" method="post" action="{{ url_for('web.delete_product', product_id=product.id) }}">
+                                    <button class="btn danger" type="submit">删除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

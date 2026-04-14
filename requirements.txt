@@ -1,0 +1,7 @@
+Flask
+Flask-Cors
+Flask-Login
+Flask-SQLAlchemy
+itsdangerous
+pytest
+pytest-cov
