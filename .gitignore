@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Test/cache
+.pytest_cache/
+.coverage
+
+# Local runtime data
+instance/
+*.db
+
+# IDE/system
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Optional duplicate templates at root
+templates/
