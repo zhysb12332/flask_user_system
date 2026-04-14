@@ -30,4 +30,8 @@ jobs:
           script: |
             export REPO_URL="${{ secrets.REPO_URL }}"
             export DEPLOY_BRANCH=main
-            bash /opt/flask_user_system/scripts/deploy_vps.sh
+            APP_DIR="/opt/flask_user_system"
+            if [ ! -d "$APP_DIR" ]; then
+              git clone "$REPO_URL" "$APP_DIR"
+            fi
+            bash "$APP_DIR/scripts/deploy_vps.sh"
